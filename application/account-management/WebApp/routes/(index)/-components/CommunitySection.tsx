@@ -35,7 +35,7 @@ export function CommunitySection() {
     <div className="flex flex-col gap-8 items-center bg-background py-48">
       <div className="flex flex-col gap-8 text-center items-center md:px-32 lg:px-64 px-8 max-w-7xl">
         <h1 className="text-amber-600 text-base font-semibold">COMMUNITY</h1>
-        <h2 className="text-foreground text-4xl md:text-6xl font-semibold">Join builders on PlatformPlatform</h2>
+        <h2 className="text-foreground text-4xl md:text-6xl font-semibold">Join builders on TypeScriptPlatform</h2>
         <p className="text-muted-foreground text-xl font-normal">
           Our community is full of developers, designers and founders - just like you, to get your going, sharing ideas
           and experiences. Join us now.
@@ -52,7 +52,7 @@ export function CommunitySection() {
         />
         <FeatureBlock
           title="Slack"
-          content="Chat with our team or other members of the PlatformPlatform community."
+          content="Chat with our team or other members of the TypeScriptPlatform community."
           image={slackImageUrl}
           href="https://slack.com"
           linkText="Join our Slack channel"

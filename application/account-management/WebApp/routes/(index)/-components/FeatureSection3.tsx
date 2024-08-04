@@ -31,8 +31,8 @@ function FeatureTitle() {
         Focus on building and launching your core product. We got your back - Enterprise grade
       </h2>
       <p className="text-muted-foreground text-md md:text-xl font-normal">
-        PlatformPlatform uses best practices and enterprise-grade tech to provide the foundation you need to build your
-        core product.
+        TypeScriptPlatform uses best practices and enterprise-grade tech to provide the foundation you need to build
+        your core product.
       </p>
     </>
   );

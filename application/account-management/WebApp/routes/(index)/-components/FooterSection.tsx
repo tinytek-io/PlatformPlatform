@@ -29,7 +29,7 @@ export function FooterSection() {
         <hr className="border-t border-gray-300 my-8" />
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-muted-foreground text-base font-normal mb-4 md:mb-0">
-            © 2024 PlatformPlatform. All rights reserved.
+            © 2024 TypeScriptPlatform. All rights reserved.
           </div>
           <div className="flex flex-row gap-8">
             <img src={twitterLogo} alt="Twitter Logo" loading="lazy" />

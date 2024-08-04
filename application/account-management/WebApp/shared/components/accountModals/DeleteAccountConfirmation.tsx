@@ -17,7 +17,7 @@ export function DeleteAccountConfirmation({ isOpen, onOpenChange }: Readonly<Del
       >
         You’re about to permanently delete the account and all data...
         <br />
-        environment through PlatformPlatform.
+        environment through TypeScriptPlatform.
         <br />
         <br />
         Are you sure you want to delete?

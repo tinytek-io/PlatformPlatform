@@ -51,7 +51,7 @@ function FeatureList() {
       <div className="flex flex-col gap-4">
         <h3 className="text-foreground text-2xl font-semibold">Monorepo containing all application code</h3>
         <p className="text-muted-foreground text-md md:text-xl font-normal">
-          PlatformPlatform is a monorepo containing all application code, infrastructure, tools, libraries,
+          TypeScriptPlatform is a monorepo containing all application code, infrastructure, tools, libraries,
           documentation, etc. A monorepo is a powerful way to organize a codebase, used by Google, Facebook, Uber,
           Microsoft, etc.
         </p>
@@ -65,7 +65,7 @@ function FeatureList() {
       <div className="flex flex-col gap-4">
         <h3 className="text-foreground text-2xl font-semibold">100% Security score</h3>
         <p className="text-muted-foreground text-md md:text-xl font-normal">
-          This is the security score after deploying PlatformPlatform resources to Azure. Achieving a 100% security
+          This is the security score after deploying TypeScriptPlatform resources to Azure. Achieving a 100% security
           score in Azure Defender for Cloud without exemptions is not trivial.
         </p>
       </div>

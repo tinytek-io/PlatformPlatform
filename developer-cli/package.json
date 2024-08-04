@@ -1,0 +1,19 @@
+{
+  "name": "developer-cli",
+  "version": "1.0.0",
+  "description": "A CLI for developers",
+  "main": "index.js",
+  "bin": {
+    "developer-cli": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["cli", "developer"],
+  "author": "TinyTek",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "commander": "^12.1.0"
+  }
+}

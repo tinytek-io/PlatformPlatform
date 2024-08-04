@@ -80,7 +80,7 @@ export function StartAccountRegistrationForm() {
       </Link>
       <Heading className="text-2xl">Create your account</Heading>
       <div className="text-center text-muted-foreground text-sm">
-        Sign up in seconds to get started building on PlatformPlatform - just like thousands of others.
+        Sign up in seconds to get started building on TypeScriptPlatform - just like thousands of others.
       </div>
       <TextField
         name="email"
@@ -96,7 +96,7 @@ export function StartAccountRegistrationForm() {
       />
       <DomainInputField
         name="subdomain"
-        domain=".platformplatform.net"
+        domain=".TypeScriptPlatform.net"
         label={i18n.t("Subdomain")}
         placeholder={i18n.t("subdomain")}
         isRequired

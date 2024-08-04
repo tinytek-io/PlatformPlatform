@@ -7,7 +7,7 @@ export function TechnologySection() {
       <div className="flex flex-col gap-4 text-foreground text-3xl font-semibold text-start w-2/3">
         <h1 className="text-amber-600 text-base font-semibold text-start">FEATURES</h1>
         <p className="text-foreground text-4xl font-semibold text-start">
-          Standing on the shoulders of giants. Building blocks of PlatformPlatform
+          Standing on the shoulders of giants. Building blocks of TypeScriptPlatform
         </p>
       </div>
       <div className="flex md:flex-row flex-col gap-16">

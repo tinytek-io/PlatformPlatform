@@ -7,7 +7,7 @@ export function CtaSection() {
       <div className="flex flex-col gap-8 text-center px-8">
         <h2 className="text-foreground text-4xl font-semibold">A single solution for you to build on</h2>
         <p className="text-muted-foreground text-xl font-normal">
-          Join Startups and Enterprises already building on PlatformPlatform
+          Join Startups and Enterprises already building on TypeScriptPlatform
         </p>
         <div className="flex flex-col md:gap-8 items-center">
           <Button variant="secondary">Get started today - it&apos;s free</Button>

@@ -72,7 +72,7 @@ jobs:
       - name: Build backend solution
         working-directory: application
         run: |
-          dotnet build PlatformPlatform.sln --no-restore /p:Version=${{ steps.generate_version.outputs.version }}
+          dotnet build TypeScriptPlatform.sln --no-restore /p:Version=${{ steps.generate_version.outputs.version }}
 
       - name: Publish build
         if: github.ref == 'refs/heads/main'
@@ -122,12 +122,12 @@ jobs:
 
       - name: Build backend solution
         working-directory: application
-        run: dotnet build PlatformPlatform.sln --no-restore
+        run: dotnet build TypeScriptPlatform.sln --no-restore
 
       - name: Run code inspections
         working-directory: application
         run: |
-          dotnet jb inspectcode PlatformPlatform.sln --no-build --output=result.json --severity=SUGGESTION
+          dotnet jb inspectcode TypeScriptPlatform.sln --no-build --output=result.json --severity=SUGGESTION
 
           # Check if there are any issues. <Issues /> indicates no issues found.
           if ! grep -q '\"results\": \[\],' result.json; then
@@ -139,11 +139,11 @@ jobs:
       - name: Check for code formatting issues
         working-directory: application
         run: |
-          dotnet jb cleanupcode PlatformPlatform.sln --no-build --profile=".NET only"
+          dotnet jb cleanupcode TypeScriptPlatform.sln --no-build --profile=".NET only"
 
           # Check for any changes made by the code formatter
           git diff --exit-code || {
-            echo "Formatting issues detected. Please run 'dotnet jb cleanupcode PlatformPlatform.sln --profile=\".NET only\"' locally and commit the formatted code."
+            echo "Formatting issues detected. Please run 'dotnet jb cleanupcode TypeScriptPlatform.sln --profile=\".NET only\"' locally and commit the formatted code."
             exit 1
           }
 

@@ -6,7 +6,7 @@ The security of our project is a top priority. We appreciate the contributions o
 
 ## Reporting a Vulnerability
 
-If you encounter or suspect any security issues, please [use this form to create a new security advisory](https://github.com/platformplatform/PlatformPlatform/security/advisories). We take all reports seriously and will respond promptly.
+If you encounter or suspect any security issues, please [use this form to create a new security advisory](https://github.com/tinytek-io/TypeScriptPlatform/security/advisories). We take all reports seriously and will respond promptly.
 
 ## Responsible Disclosure Policy
 
@@ -14,7 +14,7 @@ We support responsible disclosure practices. Please allow us a reasonable timefr
 
 ## Security Roadmap
 
-PlatformPlatform is currently in the early stage. We're proactively working towards strengthening our security posture. Our ongoing efforts include:
+TypeScriptPlatform is currently in the early stage. We're proactively working towards strengthening our security posture. Our ongoing efforts include:
 
 1. Engaging professional penetration testing services
 2. Implementing Static Code Analysis within pull request workflows

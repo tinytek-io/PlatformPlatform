@@ -45,7 +45,7 @@ function TopBar() {
         <DocumentationLink />
       </div>
       <div className="flex w-full md:w-fit justify-between gap-2 md:gap-4 items-center">
-        <Link href="https://github.com/platformplatform/PlatformPlatform">
+        <Link href="https://github.com/TypeScriptPlatform/TypeScriptPlatform">
           <GithubIcon className="wmax-5 h-5" />
           <span className="md:hidden lg:inline">Github</span>
         </Link>

@@ -8,4 +8,4 @@ COPY ./Api/publish .
 
 USER app
 
-ENTRYPOINT ["dotnet", "PlatformPlatform.AccountManagement.Api.dll"]
+ENTRYPOINT ["dotnet", "TypeScriptPlatform.AccountManagement.Api.dll"]

@@ -1,157 +1,29 @@
-![PlatformPlatform Resource Groups](https://platformplatformgithub.blob.core.windows.net/$root/GitHubTopBanner.png)
+![TypeScriptPlatform Resource Groups](./docs/images/github-banner.png)
 
-<h4 align="center">
-
-[![AppGateway](https://github.com/platformplatform/PlatformPlatform/actions/workflows/app-gateway.yml/badge.svg)](https://github.com/platformplatform/PlatformPlatform/actions/workflows/app-gateway.yml?query=branch%3Amain)
-[![AccountManagement](https://github.com/platformplatform/PlatformPlatform/actions/workflows/account-management.yml/badge.svg)](https://github.com/platformplatform/PlatformPlatform/actions/workflows/account-management.yml?query=branch%3Amain)
-[![GitHub issues with enhancement label](https://img.shields.io/github/issues-raw/platformplatform/PlatformPlatform/enhancement?label=enhancements&logo=github&color=%23A2EEEF)](https://github.com/orgs/PlatformPlatform/projects/1/views/3?filterQuery=-status%3A%22%E2%9C%85+Done%22+label%3Aenhancement)
-[![GitHub issues with roadmap label](https://img.shields.io/github/issues-raw/platformplatform/PlatformPlatform/roadmap?label=roadmap&logo=github&color=%23006B75)](https://github.com/orgs/PlatformPlatform/projects/2/views/2?filterQuery=is%3Aopen+label%3Aroadmap)
-[![GitHub issues with bug label](https://img.shields.io/github/issues-raw/platformplatform/PlatformPlatform/bug?label=bugs&logo=github&color=red)](https://github.com/platformplatform/PlatformPlatform/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
-
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=PlatformPlatform_platformplatform&metric=coverage)](https://sonarcloud.io/component_measures?id=PlatformPlatform_platformplatform&metric=coverage)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=PlatformPlatform_platformplatform&metric=alert_status)](https://sonarcloud.io/summary/overall?id=PlatformPlatform_platformplatform)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=PlatformPlatform_platformplatform&metric=security_rating)](https://sonarcloud.io/component_measures?id=PlatformPlatform_platformplatform&metric=Security)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=PlatformPlatform_platformplatform&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=PlatformPlatform_platformplatform&metric=Reliability)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=PlatformPlatform_platformplatform&metric=sqale_rating)](https://sonarcloud.io/component_measures?id=PlatformPlatform_platformplatform&metric=Maintainability)
-
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=PlatformPlatform_platformplatform&metric=code_smells)](https://sonarcloud.io/project/issues?id=PlatformPlatform_platformplatform&resolved=false&types=CODE_SMELL)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=PlatformPlatform_platformplatform&metric=vulnerabilities)](https://sonarcloud.io/project/issues?id=PlatformPlatform_platformplatform&resolved=false&types=VULNERABILITY)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=PlatformPlatform_platformplatform&metric=bugs)](https://sonarcloud.io/project/issues?id=PlatformPlatform_platformplatform&resolved=false&types=BUG)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=PlatformPlatform_platformplatform&metric=sqale_index)](https://sonarcloud.io/component_measures?id=PlatformPlatform_platformplatform&metric=sqale_index)
-
-</h4>
-
-# 👋 Welcome to PlatformPlatform
+# 👋 Welcome to TypeScriptPlatform
 
 Kick-start building top-tier B2B & B2C cloud SaaS products with sleek design, fully localized and accessible, clean architecture, automated and fast DevOps, and top-notch security. All in one place – at zero cost.
 
 This is in the box:
 
-* **Backend** - .NET and C# adhering to the principles of Clean Architecture, DDD, CQRS, and clean code
+* **Backend** - Express and TypeScript adhering to the principles of Clean Architecture, DDD, CQRS, and clean code
 * **Frontend** - React using TypeScript, with a sleek fully localized UI and a mature accessible design system
 * **CI/CD** - GitHub actions for fast passwordless deployments of application (Docker) and infrastructure (Bicep)
 * **Infrastructure** - Cost efficient and scalable Azure PaaS services like Azure Container Apps, Azure SQL, etc.
-* **Developer CLI** - Extendable .NET CLI for DevEx - set up CI/CD is one command and a couple of questions
+* **Developer CLI** - Extendable TypeScript CLI for DevEx - set up CI/CD is one command and a couple of questions
 
-Still pre-alpha state, follow our [up-to-date roadmap](https://github.com/orgs/PlatformPlatform/projects/2/views/2) with core SaaS features like multi-tenancy, authentication, SSO, user management, telemetry, monitoring, alerts, multi-region, feature flags, back office for support, etc.
+Still pre-alpha state, follow our [up-to-date roadmap](https://github.com/orgs/TypeScriptPlatform/projects/2/views/2) with core SaaS features like multi-tenancy, authentication, SSO, user management, telemetry, monitoring, alerts, multi-region, feature flags, back office for support, etc.
 
 Show your support for our project – Give us a star on GitHub! It truly means a lot! ⭐
 
 # Getting Started 1-2-3
 
-TL;DR: Open the [PlatformPlatform](/application/PlatformPlatform.sln) solution in Rider or Visual Studio and run the [Aspire AppHost](/application/AppHost/AppHost.csproj) project.
-
-<img src="https://github.com/tjementum/PlatformPlatformScreenshots/blob/screenhosts/GettingStarted.gif?raw=true" alt="Getting Started" title="Getting Started" width="800"/>
+1. **Fork and clone the repository**
+2. **Run `tilt up`**
 
 ### Prerequisites
 
-For development, you need .NET, Aspire, Docker, and Node. And GitHub and Azure CLI for setting up CI/CD.
-
-<details>
-
-<summary>Install prerequisites for Windows</summary>
-
-Open a PowerShell terminal as Administrator and run the following commands:
-
-- `wsl --install` (Windows Subsystem for Linux, required for Docker)
-- Install [Chocolatey](https://chocolatey.org/install), a package manager for Windows
-- `choco install dotnet-sdk git docker-desktop nodejs azure-cli gh`
-- `dotnet workload update` and `dotnet workload install aspire`
-
-</details>
-
-<details>
-
-<summary>Install prerequisites for Mac</summary>
-
-Open a terminal and run the following commands:
-
-- Install [Homebrew](https://brew.sh/), a package manager for Mac
-- `brew install --cask dotnet-sdk`
-- `brew install git docker node azure-cli gh`
-- `dotnet workload update` and `dotnet workload install aspire`
-- `dotnet dev-certs https --trust`
-
-</details>
-
-<details>
-
-<summary>Install prerequisites for Linux/WSL2</summary>
-
-Open a terminal and run the following commands:
-
-- Install Wget
-
-  ```bash
-  sudo apt update && sudo apt-get install wget -y
-  ```
-
-- Install Microsoft repository
-
-  ```bash
-  source /etc/os-release
-  wget https://packages.microsoft.com/config/$ID/$VERSION_ID/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-  sudo dpkg -i packages-microsoft-prod.deb
-  rm packages-microsoft-prod.deb
-  ```
-
-- Install Node repository
-
-  ```bash
-  curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-  ```
-
-- Install GitHub Package repository
-
-  ```bash
-  (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
-  && sudo mkdir -p -m 755 /etc/apt/keyrings \
-  && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-  && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-  ```
-
-- Update packages
-
-  ```bash
-  sudo apt-get update
-  ```
-
-- Install .NET SDK 8.0, Node, GitHub CLI
-
-  ```bash
-  sudo apt-get install -y dotnet-sdk-8.0 nodejs gh
-  ```
-
-- Install .NET Aspire workload
-
-  ```bash
-  sudo dotnet workload update && dotnet workload install aspire
-  ```
-
-- Install Azure CLI
-
-  ```bash
-  curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-  ```
-
-- Install Certificate
-  ```bash
-  dotnet tool update -g linux-dev-certs
-  dotnet linux-dev-certs install
-  ```
-
-- Trust Certificates
-
-  ```bash
-  cd /usr/local/share/ca-certificates/aspnet-dev-{Environment.UserName}.crt && explorer.exe .
-  # Install self signed root certificate
-
-  # Open the windows certificate manager and import root certificate
-  # "\\wsl.localhost\Ubuntu-20.04\home\maximus\.aspnet\dev-certs\https\platformplatform.pfx"
-  ```
-
-</details>
+For development, you need Tilt, Docker, and Node. And GitHub and Azure CLI for setting up CI/CD.
 
 ## 1. Fork and clone the repository
 
@@ -159,31 +31,27 @@ Forking is only required to configure GitHub repository with continuous deployme
 
 Our clean commit history serves as a great learning and troubleshooting resource. We recommend you keep it 😃
 
-## 2. Run the Aspire AppHost to spin up everything on localhost
+## 2. Run Tilt to spin up everything on localhost
 
-Using .NET Aspire, docker images with SQL Server, Blob Storage, and mail server will be downloaded and started. No need install anything, or learn complicated commands. Simply run this command, and everything just works 🎉
+Using docker images with SQL Server, Blob Storage, and mail server will be downloaded and started. No need install anything, or learn complicated commands. Simply run this command, and everything just works 🎉
 
 ```bash
-cd developer-cli
-dotnet run dev # First run will be slow as Docker images are downloaded
+tilt up # First run will be slow as Docker images are downloaded
 ```
-
-Alternatively, open the [PlatformPlatform](/application/PlatformPlatform.sln) solution in Rider or Visual Studio and run the [Aspire AppHost](/application/AppHost/AppHost.csproj) project.
 
 ## 3. Set up CI/CD with passwordless deployments from GitHub to Azure
 
-Run this command to automate Azure Subscription configuration and set up [GitHub Workflows](https://github.com/platformplatform/PlatformPlatform/actions) for deploying [Azure Infrastructure](/cloud-infrastructure/) (using Bicep) and compiling [application code](/application/) to Docker images deployed to Azure Container Apps:
+Run this command to automate Azure Subscription configuration and set up [GitHub Workflows](https://github.com/tinytek-io/PlatformPlatform/actions) for deploying [Azure Infrastructure](/cloud-infrastructure/) (using Bicep) and compiling [application code](/application/) to Docker images deployed to Azure Container Apps:
 
 ```bash
-cd developer-cli
-dotnet run configure-continuous-deployments # Tip: Add --verbose-logging to show the used CLI commands
+npx developer-cli configure-continuous-deployments # Tip: Add --verbose-logging to show the used CLI commands
 ```
 
 You need to be the owner of the GitHub repository and the Azure Subscription, plus have permissions to create Service Principals and Active Directory Groups.
 
 The command will first prompt you to login to Azure and GitHub, and collect information. You will be presented with a complete list of changes before they are applied. It will look something like this:
 
-![Configure Continuous Deployments](https://platformplatformgithub.blob.core.windows.net/$root/ConfigureContinuousDeployments.png)
+![Configure Continuous Deployments](https://TypeScriptPlatformgithub.blob.core.windows.net/$root/ConfigureContinuousDeployments.png)
 
 Except for adding a DNS record, everything is fully automated. After successful setup, the command will provide simple instructions on how to configure branch policies, Sonar Cloud static code analysis, and more.
 
@@ -191,13 +59,12 @@ The infrastructure is configured with auto-scaling and hosting costs in focus. I
 
 # Inside Our Monorepo
 
-PlatformPlatform is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) containing all application code, infrastructure, tools, libraries, documentation, etc. A monorepo is a powerful way to organize a codebase, used by Google, Facebook, Uber, Microsoft, etc.
+TypeScriptPlatform is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) containing all application code, infrastructure, tools, libraries, documentation, etc. A monorepo is a powerful way to organize a codebase, used by Google, Facebook, Uber, Microsoft, etc.
 
 ```bash
 .
 ├─ .github               # Separate GitHub workflows for deploying Infrastructure and app
 ├─ application           # Contains the application source code
-│  ├─ AppHost            # .NET Aspire project starting app and all dependencies in Docker
 │  ├─ AppGateway         # Main entry point for the app using YARP as a reverse proxy 
 │  ├─ account-management # Self-contained system with account sign-up, user management, etc.
 │  │   ├─ WebApp         # React SPA frontend using TypeScript and React Aria Components
@@ -207,7 +74,8 @@ PlatformPlatform is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) contain
 │  │   ├─ Infrastructure # Integrations for accessing external resources (e.g., database)
 │  │   ├─ Workers        # Background workers for long-running tasks and event processing
 │  │   └─ Tests          # Tests for the API, Application, Domain, and Infrastructure
-│  ├─ shared-kernel      # Reusable components for all self-contained systems
+│  ├─ shared-kernel      # Reusable components for all self-contained systems (Back-end)
+│  ├─ shared-webapp      # Reusable components for all self-contained systems (Front-end)
 │  ├─ [saas-scs]         # [Your SCS] Create your SaaS product as a self-contained system
 │  └─ back-office        # A self-contained system for operations and support (empty for now)
 ├─ cloud-infrastructure  # Contains Bash and Bicep scripts (IaC) for Azure resources
@@ -215,27 +83,28 @@ PlatformPlatform is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) contain
 │  ├─ environment        # Shared resources like App Insights for all Production clusters
 │  ├─ shared             # Azure Container Registry shared between all environments
 │  └─ modules            # Reusable Bicep modules like Container App, SQL Server, etc.
-└─ development-cli       # A .NET CLI tool for automating common developer tasks
+└─ development-cli       # A TypeScript CLI tool for automating common developer tasks
 ```
 
 ** A [Self-Contained System](https://scs-architecture.org/) is a large microservice (or a small monolith) that contains the full stack, including frontend, background jobs, etc. These can be developed, tested, deployed, and scaled in isolation.
 
 # Technologies
 
-### .NET 8 Backend With Clean Architecture, DDD, CQRS, Minimal API, and Aspire
+### NestJs Backend With Clean Architecture, DDD, CQRS and TypeScript
 
 The backend is built using the most popular, mature, and commonly used technologies in the .NET ecosystem:
 
-- [.NET 8](https://dotnet.microsoft.com) and [C# 12](https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp)
-- [.NET Aspire](https://aka.ms/dotnet-aspire)
-- [YARP](https://microsoft.github.io/reverse-proxy)
-- [ASP.NET Minimal API](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis)
-- [Entity Framework](https://learn.microsoft.com/en-us/ef)
-- [MediatR](https://github.com/jbogard/MediatR)
-- [FluentValidation](https://fluentvalidation.net)
-- [Mapster](https://github.com/MapsterMapper/Mapster)
-- [XUnit](https://xunit.net), [FluentAssertions](https://fluentassertions.com), [NSubstitute](https://nsubstitute.github.io), and [Bogus](https://github.com/bchavez/Bogus)
-- [SonarCloud](https://sonarcloud.io) and [JetBrains Code style and Cleanup](https://www.jetbrains.com/help/rider/Code_Style_Assistance.html)
+- [Express.js](https://expressjs.com)
+- [TypeScript](https://www.typescriptlang.org)
+- [NestJs](https://nestjs.com)
+- [Prisma](https://www.prisma.io)
+- [Helmet](https://helmetjs.github.io)
+- [Swagger](https://swagger.io)
+- [Row-Level Security](https://www.postgresql.org/docs/14/ddl-rowsecurity.html)
+- [SonarCloud](https://sonarcloud.io)
+- [trpc](https://trpc.io)
+- [Zod](https://zod.dev)
+- [Auth.js](https://authjs.dev)
 
 <details>
 
@@ -267,7 +136,7 @@ The frontend is built with these technologies:
 
 ### Azure Cloud Infrastructure With Enterprise-Grade Security and Zero Secrets
 
-PlatformPlatform's cloud infrastructure is built using the latest Azure Platform as a Service (PaaS) technologies:
+TypeScriptPlatform's cloud infrastructure is built using the latest Azure Platform as a Service (PaaS) technologies:
 
 - [Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/overview)
 - [Azure SQL](https://azure.microsoft.com/en-us/products/azure-sql)
@@ -286,7 +155,7 @@ PlatformPlatform's cloud infrastructure is built using the latest Azure Platform
 
 <summary>Read more about this enterprise-grade architecture</summary>
 
-- **Platform as a Service (PaaS) technologies**: Azure is the leading Cloud Service Provider (CSP) when it comes to PaaS technologies. PlatformPlatform uses PaaS technologies which are fully managed by Microsoft, as opposed to Infrastructure as a Service (IaaS) technologies where the customer is responsible for the underlying infrastructure. This means that Microsoft is responsible for the availability of the infrastructure, and you are only responsible for the application and data. This makes it possible for even a small team to run a highly scalable, stable, and secure solution.
+- **Platform as a Service (PaaS) technologies**: Azure is the leading Cloud Service Provider (CSP) when it comes to PaaS technologies. TypeScriptPlatform uses PaaS technologies which are fully managed by Microsoft, as opposed to Infrastructure as a Service (IaaS) technologies where the customer is responsible for the underlying infrastructure. This means that Microsoft is responsible for the availability of the infrastructure, and you are only responsible for the application and data. This makes it possible for even a small team to run a highly scalable, stable, and secure solution.
 - **Enterprise-grade security with zero secrets**:
   - **Managed Identities**: No secrets are used when Container Apps connect to e.g. Databases, Blob Storage, and Service Bus. The infrastructure uses Managed Identities for all communication with Azure resources, eliminating the need for secrets.
   - **Federated credentials**: Deployment from GitHub to Azure is done using federated credentials, establishing a trust between the GitHub repository and Azure subscription based on the repository's URL, without the need for secrets.
@@ -305,14 +174,14 @@ PlatformPlatform's cloud infrastructure is built using the latest Azure Platform
 
 This is how it looks when GitHub workflows has deployed Azure Infrastructure:
 
-![GitHub Environments](https://platformplatformgithub.blob.core.windows.net/GitHubInfrastructureDeployments.png)
+![GitHub Environments](https://TypeScriptPlatformgithub.blob.core.windows.net/GitHubInfrastructureDeployments.png)
 
 These are the resource groups created when deploying one staging cluster, and two production clusters:
 
-![PlatformPlatform Resource Groups](https://platformplatformgithub.blob.core.windows.net/PlatformPlatformResourceGroups.png)
+![TypeScriptPlatform Resource Groups](https://TypeScriptPlatformgithub.blob.core.windows.net/TypeScriptPlatformResourceGroups.png)
 
-This is the security score after deploying PlatformPlatform resources to Azure. Achieving a 100% security score in Azure Defender for Cloud without exemptions is not trivial.
+This is the security score after deploying TypeScriptPlatform resources to Azure. Achieving a 100% security score in Azure Defender for Cloud without exemptions is not trivial.
 
-![Azure Security Recommendations](https://platformplatformgithub.blob.core.windows.net/AzureSecurityRecommendations.png)
+![Azure Security Recommendations](https://TypeScriptPlatformgithub.blob.core.windows.net/AzureSecurityRecommendations.png)
 
 https://123456789012345678901234.blob.core.windows.net/profileimages/01HS13BVF09A8AYYCMR2T9P7ZN.png

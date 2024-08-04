@@ -8,7 +8,7 @@ export function CtaSection3() {
         <div className="flex flex-col gap-8 text-center">
           <h2 className="text-foreground text-4xl md:text-6xl font-semibold">Start scaling your business today</h2>
           <p className="text-muted-foreground text-xl font-normal">
-            Join Startups and Enterprises already building on PlatformPlatform
+            Join Startups and Enterprises already building on TypeScriptPlatform
           </p>
           <div className="flex flex-col md:gap-8 items-center">
             {/* Button component is used to display a call to action */}

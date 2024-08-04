@@ -24,8 +24,8 @@ export type DevelopmentServerPluginOptions = {
 };
 
 /**
- * RsBuild plugin to configure the development server to use the platformplatform.pfx certificate and
- * allow CORS for the platformplatform server.
+ * RsBuild plugin to configure the development server to use the TypeScriptPlatform.pfx certificate and
+ * allow CORS for the TypeScriptPlatform server.
  *
  * @param options - The options for the plugin
  */
@@ -39,8 +39,8 @@ export function DevelopmentServerPlugin(options: DevelopmentServerPluginOptions)
           return userConfig;
         }
 
-        // Path to the platformplatform.pfx certificate generated as part of the Aspire setup
-        const pfxPath = path.join(os.homedir(), ".aspnet", "dev-certs", "https", "platformplatform.pfx");
+        // Path to the TypeScriptPlatform.pfx certificate generated as part of the Aspire setup
+        const pfxPath = path.join(os.homedir(), ".aspnet", "dev-certs", "https", "TypeScriptPlatform.pfx");
         const passphrase = process.env.CERTIFICATE_PASSWORD ?? "";
 
         if (fs.existsSync(pfxPath) === false) {
@@ -57,11 +57,11 @@ export function DevelopmentServerPlugin(options: DevelopmentServerPluginOptions)
           server: {
             // If the port is occupied the server will exit with an error
             strictPort: true,
-            // Allow CORS for the platformplatform server
+            // Allow CORS for the TypeScriptPlatform server
             headers: {
               "Access-Control-Allow-Origin": "*"
             },
-            // Start the server on the specified port with the platformplatform.pfx certificate
+            // Start the server on the specified port with the TypeScriptPlatform.pfx certificate
             port: options.port,
             https: {
               pfx: fs.readFileSync(pfxPath),

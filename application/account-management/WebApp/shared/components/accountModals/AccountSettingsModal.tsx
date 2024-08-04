@@ -34,7 +34,7 @@ export function AccountSettingsModal({ isOpen, onOpenChange, onDeleteAccount }: 
             </div>
             <div className="flex flex-col gap-1">
               <label>Domain</label>
-              <Input value="subdomain.platformplatform.net" isDisabled={true} />
+              <Input value="subdomain.TypeScriptPlatform.net" isDisabled={true} />
             </div>
           </div>
           <h3 className="text-base pb-2">Danger zone</h3>

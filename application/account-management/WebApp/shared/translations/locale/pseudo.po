@@ -101,7 +101,7 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-msgid "Log in with your company email address to get started building on PlatformPlatform - just like thousands of other developers."
+msgid "Log in with your company email address to get started building on TypeScriptPlatform - just like thousands of other developers."
 msgstr ""
 
 msgid "Sign up"

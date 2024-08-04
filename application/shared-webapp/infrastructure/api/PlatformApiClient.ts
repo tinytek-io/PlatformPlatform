@@ -15,13 +15,13 @@ import { createApiReactHook, type PlatformApiReactHook } from "./ApiReactHook";
  * We use the openapi-fetch library to create a client for the platform API.
  * In addition to the standard client methods, we also provide a method to call server actions.
  *
- * Due to __"operational consistency"__ in `PlatformPlatform` all Api calls have a uniform behavior.
+ * Due to __"operational consistency"__ in `TypeScriptPlatform` all Api calls have a uniform behavior.
  * * `baseUrl` is set to the `import.meta.env.PUBLIC_URL` per default *(but can be overridden)*
  * * Data is returned by the api client otherwise errors are thrown as either `Error` or `ProblemDetailsError`
  * * Use the http methods `get`, `put`, `post`, `delete`, `options`, `head`, `patch`, `trace` to call the api
  * * Use the `action` method to call server actions *(Useful for interacting with Form data in React)*
  *
- * In PlatformPlatform all Api calls use the ProblemDetails standard and throw errors.
+ * In TypeScriptPlatform all Api calls use the ProblemDetails standard and throw errors.
  */
 export function createPlatformApiClient<Paths extends {}, Media extends MediaType = MediaType>(
   clientOptions?: ClientOptions
