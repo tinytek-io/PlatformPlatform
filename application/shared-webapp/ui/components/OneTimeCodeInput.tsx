@@ -67,7 +67,7 @@ export function OneTimeCodeInput({
           id={digitRefs[i]}
           value={digit}
           digitPattern={digitPattern}
-          autoComplete={i === 0 ? "one-time-code" : undefined}
+          autoComplete={i === 0 ? "one-time-code" : "off"}
           onChange={(value) => onChangeHandler(value, i)}
           autoFocus={i === inputValue.length && autoFocus}
           disabled={disabled}

@@ -11,7 +11,11 @@ import type { AdditionalRoutes } from "./additionalRoutes";
  * - `https://example.com`
  * - `http://example.com`
  */
-type AdditionalPathsType = `${AdditionalRoutes}${string}`;
+type AdditionalPathsType =
+  | `http://${string}`
+  | `https://${string}`
+  | AdditionalRoutes
+  | `${AdditionalRoutes}/${string}`;
 const additionalPathPrefixes: AdditionalPathsType[] = ["https://", "http://"];
 
 /**

@@ -25,7 +25,7 @@ const applicationInsights = new ApplicationInsights({
     instrumentationKey: "webapp",
     disableInstrumentationKeyValidation: true,
     // Set the endpoint URL to our custom endpoint
-    endpointUrl: "/api/track",
+    endpointUrl: `/${import.meta.runtime_env.SYSTEM_NAME}/api/track`,
     // Enable auto route tracking for React Router
     enableAutoRouteTracking: true,
     // Instrument error tracking

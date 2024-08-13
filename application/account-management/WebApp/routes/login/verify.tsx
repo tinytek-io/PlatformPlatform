@@ -11,10 +11,10 @@ import { useExpirationTimeout } from "@repo/ui/hooks/useExpiration";
 import logoMarkUrl from "@/shared/images/logo-mark.svg";
 import poweredByUrl from "@/shared/images/powered-by.svg";
 import { useFormState } from "react-dom";
-import { api } from "@/shared/lib/api/client";
 import { FormErrorMessage } from "@repo/ui/components/FormErrorMessage";
-import { getVerificationInfo } from "./-shared/verificationState";
+import { getVerificationInfo, setVerificationInfo } from "./-shared/verificationState";
 import { signedInPath } from "@repo/infrastructure/auth/constants";
+import { serverAction } from "@/shared/lib/api/elysia";
 
 export const Route = createFileRoute("/login/verify")({
   component: () => (
@@ -32,20 +32,30 @@ export const Route = createFileRoute("/login/verify")({
 export function CompleteLoginForm() {
   const { email, id, expireAt } = getVerificationInfo();
   const { expiresInString, isExpired } = useExpirationTimeout(expireAt);
-  const [{ success, title, message, errors }, action] = useFormState(
-    api.action("/api/account-management/authentication/{id}/complete"),
-    {
-      success: null
+  const [{ success, title, message, errors, data }, action] = useFormState(serverAction("/authentication/otp/verify"), {
+    success: null
+  });
+
+  if (isExpired) return <Navigate to="/login/expired" />;
+
+  if (success) {
+    if (typeof data === "object" && "tenants" in data) {
+      // Multiple tenants
+      setVerificationInfo({
+        id,
+        email,
+        expireAt: new Date(Date.now() + data.validForSeconds * 1000),
+        tenants: data.tenants,
+        code: data.code
+      });
+      return <Navigate to="/login/select-tenant" />;
     }
-  );
-
-  if (isExpired) return <Navigate to="/register/expired" />;
-
-  if (success) return <Navigate to={signedInPath} />;
+    return <Navigate to={signedInPath} />;
+  }
 
   return (
     <Form action={action} validationErrors={errors} validationBehavior="aria" className="w-full max-w-sm space-y-3">
-      <input type="hidden" name="id" value={id} />
+      <input type="hidden" name="email" value={email} />
       <div className="flex w-full flex-col gap-4 rounded-lg px-6 pt-8 pb-4">
         <div className="flex justify-center">
           <Link href="/">

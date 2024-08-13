@@ -136,7 +136,7 @@ function ProductSubtitle() {
 function ProductDescription() {
   return (
     <p className="text-muted-foreground text-xl">
-      Free, Open-Source .NET, React and Infrastructure kit for Startup and Enterprise.
+      Free, Open-Source TypeScript, React and Infrastructure kit for Startup and Enterprise.
     </p>
   );
 }

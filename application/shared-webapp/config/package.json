@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
+  "main": "typescript/base.json",
   "bin": {
     "workspace-biome": "./biome/workspace-biome"
   },

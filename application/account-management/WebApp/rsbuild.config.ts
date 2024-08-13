@@ -18,7 +18,7 @@ export default defineConfig({
     FileSystemRouterPlugin(),
     RunTimeEnvironmentPlugin(customBuildEnv),
     LinguiPlugin(),
-    DevelopmentServerPlugin({ port: 9101 }),
+    DevelopmentServerPlugin(),
     MFPlugin({
       exposes: {
         "./UserButton": "./shared/components/UserButton.tsx"

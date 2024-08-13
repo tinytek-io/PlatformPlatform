@@ -4,7 +4,8 @@
   "extends": "@repo/config/typescript/react-app.json",
   "compilerOptions": {
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/api-types": ["../Api/api.generated"]
     }
   },
   "exclude": ["node_modules", "dist"]

@@ -15,10 +15,10 @@ import { TextField } from "@repo/ui/components/TextField";
 import { Form } from "@repo/ui/components/Form";
 import { useFormState } from "react-dom";
 import { useState } from "react";
-import { api, useApi } from "@/shared/lib/api/client";
 import { setRegistration } from "./-shared/registrationState";
 import { FormErrorMessage } from "@repo/ui/components/FormErrorMessage";
 import { signInPath } from "@repo/infrastructure/auth/constants";
+import { serverAction, useApi } from "@/shared/lib/api/elysia";
 
 export const Route = createFileRoute("/register/")({
   component: () => (
@@ -33,21 +33,23 @@ export const Route = createFileRoute("/register/")({
   )
 });
 
+const { hostname } = new URL(import.meta.runtime_env.PUBLIC_URL);
+
 export function StartAccountRegistrationForm() {
   const { i18n } = useLingui();
   const [email, setEmail] = useState("");
 
-  const [{ success, errors, data, title, message }, action, isPending] = useFormState(
-    api.action("/api/account-management/account-registrations/start"),
+  const [{ success, title, message, errors, data }, action, isPending] = useFormState(
+    serverAction("/account-management/api/account-registration/start"),
     { success: null }
   );
 
   const [subdomain, setSubdomain] = useState("");
   const { data: isSubdomainFree } = useApi(
-    "/api/account-management/account-registrations/is-subdomain-free",
+    "/account-management/api/account-registration/is-subdomain-free",
     {
-      params: {
-        query: { Subdomain: subdomain }
+      query: {
+        subdomain
       }
     },
     {
@@ -56,7 +58,7 @@ export function StartAccountRegistrationForm() {
     }
   );
 
-  if (success === true) {
+  if (success) {
     const { accountRegistrationId, validForSeconds } = data;
 
     setRegistration({
@@ -96,7 +98,7 @@ export function StartAccountRegistrationForm() {
       />
       <DomainInputField
         name="subdomain"
-        domain=".TypeScriptPlatform.net"
+        domain={`.${hostname}`}
         label={i18n.t("Subdomain")}
         placeholder={i18n.t("subdomain")}
         isRequired

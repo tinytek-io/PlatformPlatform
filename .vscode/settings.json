@@ -26,12 +26,14 @@
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
   "files.associations": {
     "*.css": "tailwindcss"
   },
   "githubIssues.issueBranchTitle": "${issueNumber}-${sanitizedLowercaseIssueTitle}",
   "githubPullRequests.assignCreated": "${user}",
-  "dotnet.defaultSolution": "application/PlatformPlatform.sln",
   "biome.lspBin": "./application/node_modules/.bin/workspace-biome",
   "biome.searchInPath": false,
   "biome.enabled": true,

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Api",
+  "extends": "@repo/config/typescript/api-types.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "./dist",
+    "declarationDir": "./api.generated",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "api.generated"]
+}

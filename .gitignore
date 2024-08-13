@@ -1,17 +1,34 @@
-# Node.js
+# Logs
+logs
+*.log
+
+# Dependency directories
 node_modules/
 
-# macOS files
+# dotenv environment variables file
+.env
+.env.*
+!.env.example
+
+# Mac files
 .DS_Store
+
+# Development certificates
+cert.key
+cert.pem
+cert.crt
 
 # Generated files
 **/*.generated.d.ts
 **/*.generated.ts
 **/Api/swagger.json
+**/*.generated/
+declarations/
 
 # Frontend builds
 .swc/
 dist/
 .turbo/
 
+# Translations
 **/translations/locale/*.ts

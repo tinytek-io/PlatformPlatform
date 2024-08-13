@@ -1,0 +1,82 @@
+services:
+  redis:
+    image: redis:alpine
+    container_name: redis
+    # environment:
+    #  - REDIS_PASSWORD=test
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/data
+
+  postgres:
+    container_name: postgres
+    # image: postgres:15.3-alpine
+    # citus_standalone
+    image: citusdata/citus # SELECT master_get_active_worker_nodes();
+    restart: always
+    environment:
+      POSTGRES_DB: tinytek
+      POSTGRES_USER: local_admin
+      POSTGRES_PASSWORD: test
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # Create default user
+    ports:
+      - "5432:5432"
+
+  mailserver:
+    container_name: mailserver
+    image: axllent/mailpit
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    restart: always
+    environment:
+      MP_DATABASE: /data/mailpit.db
+      TZ: Europe/London
+    volumes:
+      - mailserver:/data
+
+  storage:
+    container_name: storage
+    image: mcr.microsoft.com/azure-storage/azurite
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    restart: always
+    environment:
+      - AZURITE_ACCOUNTS_PATH=/data/accounts
+      - AZURITE_BLOB_PATH=/data/blobs
+      - AZURITE_QUEUE_PATH=/data/queues
+      - AZURITE_TABLE_PATH=/data/tables
+    volumes:
+      - azurite:/data
+
+  otel:
+    container_name: otel
+    image: grafana/otel-lgtm
+    ports:
+      - "4317:4317" # OpenTelemetry Collector gRPC
+      - "4318:4318" # OpenTelemetry Collector HTTP
+      - "9001:3000" # Grafana
+
+  sslproxy:
+    container_name: sslproxy
+    image: nginx:latest
+    ports:
+      - "443:9000"
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certs:/etc/nginx/certs
+    #  - ./logs:/etc/nginx/logs
+
+volumes:
+  pgdata:
+  redis:
+  mailserver:
+  azurite:

@@ -1,0 +1,134 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("POSTGRES_PRISMA_URL")
+    directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+    tenantId      String          @db.VarChar(30)
+    id            String          @id @default(cuid()) // @id @default(dbgenerated("util.uuid('usr_'::text)"))
+    firstName     String?
+    lastName      String?
+    role          UserRole        @default(MEMBER)
+    status        UserStatus      @default(ACTIVE)
+    title         String?
+    email         String
+    emailVerified Boolean         @default(false)
+    avatarUrl     String?
+    locale        String?
+    sessions      Session[]
+    // Optional for WebAuthn support
+    Authenticator Authenticator[]
+
+    authProvider          AuthProvider
+    authProviderAccountId String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+    @@unique([tenantId, email])
+}
+
+model Session {
+    id        String      @id
+    userId    String
+    expiresAt DateTime
+    type      SessionType @default(USER)
+
+    user User @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
+model VerificationToken {
+    identifier String
+    token      String
+    expires    DateTime
+
+    @@id([identifier, token])
+}
+
+model EmailVerificationCode {
+    id        String   @id @default(cuid())
+    code      String
+    email     String   @unique
+    expiresAt DateTime
+}
+
+model AccountRegistration {
+    id        String   @id @default(cuid())
+    email     String
+    subdomain String
+    expiresAt DateTime
+
+    @@unique([email, subdomain])
+}
+
+// Optional for WebAuthn support
+model Authenticator {
+    credentialID         String  @unique
+    userId               String
+    providerAccountId    String
+    credentialPublicKey  String
+    counter              Int
+    credentialDeviceType String
+    credentialBackedUp   Boolean
+    transports           String?
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@id([userId, credentialID])
+}
+
+model Tenant {
+    id        String       @id @db.VarChar(30)
+    name      String
+    status    TenantStatus @default(TRIAL)
+    createdAt DateTime     @default(now())
+    updatedAt DateTime     @updatedAt
+
+    logoSquareUrl  String?
+    logoWideUrl    String?
+    theme          String?
+    brandColor     String?
+    mobileHeroUrl  String?
+    desktopHeroUrl String?
+
+    defaultLocale String?
+
+    users User[]
+}
+
+enum TenantStatus {
+    ACTIVE
+    TRIAL
+    INACTIVE
+}
+
+enum UserRole {
+    OWNER
+    ADMIN
+    MEMBER
+}
+
+enum UserStatus {
+    ACTIVE
+    INACTIVE
+    INVITED
+}
+
+// Reference https://arctic.js.org
+enum AuthProvider {
+    EMAIL_OTP // Local Email OTP
+    PASSKEY // Local Passkey
+    GITHUB
+}
+
+enum SessionType {
+    USER
+    TENANT
+}

@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
+  "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js",
     "./*": "./dist/*.js",
     "./plugin/*": "./dist/plugin/*.js",
     "./react-env.d.ts": "./react-env.d.ts",
+    "./environment.d.ts": "./environment.d.ts",
     "./mf-types/*.d.ts": "./mf-types/*.d.ts",
     "./package.json": "./package.json"
   },

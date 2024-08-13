@@ -33,6 +33,7 @@ export function RunTimeEnvironmentPlugin<E extends {} = Record<string, unknown>>
               }),
               "import.meta.runtime_env": "getApplicationEnvironment().runtimeEnv",
               "import.meta.user_info_env": "getApplicationEnvironment().userInfoEnv",
+              "import.meta.tenant_info_env": "getApplicationEnvironment().tenantInfoEnv",
               "import.meta.env": "getApplicationEnvironment().env"
             }
           },
@@ -48,7 +49,8 @@ export function RunTimeEnvironmentPlugin<E extends {} = Record<string, unknown>>
             // Define the runtime environment variables as part of the template
             meta: {
               runtimeEnv: "%ENCODED_RUNTIME_ENV%",
-              userInfoEnv: "%ENCODED_USER_INFO_ENV%"
+              userInfoEnv: "%ENCODED_USER_INFO_ENV%",
+              tenantInfoEnv: "%ENCODED_TENANT_INFO_ENV%"
             },
             // Add the CDN URL placeholder to the script and link tags in the
             // template file

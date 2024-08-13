@@ -1,0 +1,13 @@
+{
+  "name": "typescript-platform",
+  "version": "1.0.0",
+  "description": "TypeScriptPlatform",
+  "private": true,
+  "scripts": {
+    "infrastructure:check": "az deployment sub create -f infrastructure/azure/main.bicep -l westeurope -p environment=dev -c",
+    "infrastructure:deploy": "az deployment sub create -f infrastructure/azure/main.bicep -l westeurope -p environment=dev",
+    "cert:setup": "npm run cert:create && npm run cert:trust:mac",
+    "cert:create": "cd ./infrastructure/local/certs && openssl req -x509 -nodes -days 730 -newkey rsa:2048 -keyout cert.key -out cert.pem -config cert.conf -sha256 && openssl x509 -outform der -in cert.pem -out cert.crt",
+    "cert:trust:mac": "cd ./infrastructure/local/certs && sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ./cert.crt"
+  }
+}

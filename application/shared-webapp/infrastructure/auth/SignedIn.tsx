@@ -10,7 +10,7 @@ export interface SignedInProps {
 /**
  * Show component if user is logged in and has the required role.
  */
-export function LoggedIn({ children, requiredRoles }: SignedInProps) {
+export function SignedIn({ children, requiredRoles }: SignedInProps) {
   const userInfo = useUserInfo();
   if (userInfo == null) return null;
   if (requiredRoles != null && (userInfo.role == null || !requiredRoles.includes(userInfo.role))) return null;

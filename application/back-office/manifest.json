@@ -1,0 +1,17 @@
+{
+  "$schema": "../../infrastructure/scs-manifest.schema.json",
+  "id": "account-management",
+  "api": {
+    "port": 9200,
+    "rootPaths": ["/back-office"]
+  },
+  "webapp": {
+    "port": 9201
+  },
+  "workers": [
+    {
+      "name": "worker",
+      "port": 9299
+    }
+  ]
+}

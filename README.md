@@ -1,12 +1,12 @@
 ![TypeScriptPlatform Resource Groups](./docs/images/github-banner.png)
 
-# 👋 Welcome to TypeScriptPlatform
+# 👋 Welcome to TypeScript Platform
 
 Kick-start building top-tier B2B & B2C cloud SaaS products with sleek design, fully localized and accessible, clean architecture, automated and fast DevOps, and top-notch security. All in one place – at zero cost.
 
 This is in the box:
 
-* **Backend** - Express and TypeScript adhering to the principles of Clean Architecture, DDD, CQRS, and clean code
+* **Backend** - Elysia and TypeScript adhering to the principles of Clean Architecture, DDD, CQRS, and clean code
 * **Frontend** - React using TypeScript, with a sleek fully localized UI and a mature accessible design system
 * **CI/CD** - GitHub actions for fast passwordless deployments of application (Docker) and infrastructure (Bicep)
 * **Infrastructure** - Cost efficient and scalable Azure PaaS services like Azure Container Apps, Azure SQL, etc.
@@ -16,6 +16,8 @@ Still pre-alpha state, follow our [up-to-date roadmap](https://github.com/orgs/T
 
 Show your support for our project – Give us a star on GitHub! It truly means a lot! ⭐
 
+This project is a fork of the [PlatformPlatform](https://github.com/platformplatform/PlatformPlatform) project - An enterprise grade solution for .Net developers.
+
 # Getting Started 1-2-3
 
 1. **Fork and clone the repository**
@@ -23,7 +25,7 @@ Show your support for our project – Give us a star on GitHub! It truly means a
 
 ### Prerequisites
 
-For development, you need Tilt, Docker, and Node. And GitHub and Azure CLI for setting up CI/CD.
+For development, you need Tilt, Docker, and Bun. And GitHub and Azure CLI for setting up CI/CD.
 
 ## 1. Fork and clone the repository
 
@@ -90,21 +92,19 @@ TypeScriptPlatform is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) conta
 
 # Technologies
 
-### NestJs Backend With Clean Architecture, DDD, CQRS and TypeScript
+### Elysia Backend With Clean Architecture, DDD, CQRS and TypeScript
 
-The backend is built using the most popular, mature, and commonly used technologies in the .NET ecosystem:
+The backend is built using the most popular, mature, and commonly used technologies in the TypeScript ecosystem:
 
-- [Express.js](https://expressjs.com)
+- [Bun](https://bun.sh)
 - [TypeScript](https://www.typescriptlang.org)
-- [NestJs](https://nestjs.com)
 - [Prisma](https://www.prisma.io)
 - [Helmet](https://helmetjs.github.io)
 - [Swagger](https://swagger.io)
 - [Row-Level Security](https://www.postgresql.org/docs/14/ddl-rowsecurity.html)
 - [SonarCloud](https://sonarcloud.io)
-- [trpc](https://trpc.io)
 - [Zod](https://zod.dev)
-- [Auth.js](https://authjs.dev)
+- [Lucia](https://lucia-auth.com)
 
 <details>
 

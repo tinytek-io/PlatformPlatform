@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { AuthenticationContext } from "./AuthenticationProvider";
+import { authenticationContext } from "./AuthenticationProvider";
 
 /**
  * Get the authentication context.
  */
 export function useAuthentication() {
-  const context = useContext(AuthenticationContext);
+  const context = useContext(authenticationContext);
   if (!context) throw new Error("useAuthentication must be used within an AuthenticationProvider");
 
   return context;
@@ -15,7 +15,11 @@ export function useAuthentication() {
  * Get the current user info.
  */
 export function useUserInfo() {
-  return useAuthentication().userInfo;
+  const { userInfo } = useAuthentication();
+  if (userInfo?.isAuthenticated) {
+    return userInfo;
+  }
+  return null;
 }
 
 /**
@@ -30,4 +34,15 @@ export function useIsAuthenticated() {
  */
 export function useUserRole() {
   return useUserInfo()?.role ?? null;
+}
+
+/**
+ * Get the current tenant info.
+ */
+export function useTenantInfo() {
+  const { tenantInfo } = useAuthentication();
+  if (tenantInfo.id) {
+    return tenantInfo;
+  }
+  return null;
 }

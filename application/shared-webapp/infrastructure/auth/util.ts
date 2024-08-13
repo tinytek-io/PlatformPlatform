@@ -8,5 +8,5 @@ export function createUrlWithReturnUrl(pathname: string, returnUrl?: string) {
   const urlWithRedirectUrl = new URL(pathname, returnUrl ?? window.location.href);
   urlWithRedirectUrl.searchParams.set("returnUrl", window.location.href);
 
-  return urlWithRedirectUrl.href;
+  return urlWithRedirectUrl.pathname + urlWithRedirectUrl.search;
 }

@@ -63,6 +63,7 @@ export function DomainInputField({
             placeholder={placeholder}
             autoComplete={autocomplete}
             autoCorrect="off"
+            spellCheck="false"
             className="h-full w-full"
           />
         </div>

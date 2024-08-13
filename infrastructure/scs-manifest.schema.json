@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/tinytek-io/TypeScriptPlatform/infrastructure/scs-manifest.schema.json",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the self-contained system."
+    },
+    "api": {
+      "type": "object",
+      "description": "The back-end API configuration of the self-contained system.",
+      "properties": {
+        "port": {
+          "type": "number",
+          "description": "The port on which the API will listen."
+        },
+        "rootPaths": {
+          "type": "array",
+          "description": "The root paths of the API, normal routes are prefixed with `/api/[systemId]`",
+          "items": {
+            "type": "string",
+            "description": "A root path of the API."
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "webapp": {
+      "type": "object",
+      "description": "The front-end web application configuration of the self-contained system.",
+      "properties": {
+        "port": {
+          "type": "number",
+          "description": "The port on which the web application will listen in development mode."
+        }
+      },
+      "additionalProperties": false
+    },
+    "workers": {
+      "type": "array",
+      "description": "The worker configurations of the self-contained system.",
+      "items": {
+        "type": "object",
+        "description": "A worker configuration of the self-contained system.",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the worker."
+          },
+          "port": {
+            "type": "number",
+            "description": "The port on which the worker will listen."
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

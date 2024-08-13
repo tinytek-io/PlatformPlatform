@@ -7,8 +7,12 @@ export type UserInfo = {
   fullName: string;
 } & UserInfoEnv;
 
-export const initialUserInfo: UserInfo = createUserInfo({ ...import.meta.user_info_env });
+export type TenantInfo = TenantInfoEnv;
 
+export const initialUserInfo: UserInfo | null = createUserInfo({ ...import.meta.user_info_env });
+const initialTenantInfo = createTenantInfo({ ...import.meta.tenant_info_env });
+
+console.log(initialTenantInfo);
 console.log(initialUserInfo);
 
 /**
@@ -17,7 +21,7 @@ console.log(initialUserInfo);
  */
 export async function getUserInfo(): Promise<UserInfo | null> {
   try {
-    const response = await fetch("/api/auth/user-info");
+    const response = await fetch("/authentication/user-info");
     return createUserInfo(await response.json());
   } catch (error) {
     console.error("Failed to fetch user info", error);
@@ -25,14 +29,32 @@ export async function getUserInfo(): Promise<UserInfo | null> {
   }
 }
 
+export async function getTenantInfo(): Promise<TenantInfo | null> {
+  try {
+    const response = await fetch("/authentication/tenant-info");
+    return createTenantInfo(await response.json());
+  } catch (error) {
+    console.error("Failed to fetch tenant info", error);
+    return null;
+  }
+}
+
 export interface AuthenticationContextType {
+  tenantInfo: TenantInfo;
   userInfo: UserInfo | null;
+  reloadTenantInfo: () => void;
   reloadUserInfo: () => void;
 }
 
-export const AuthenticationContext = createContext<AuthenticationContextType>({
+export const authenticationContext = createContext<AuthenticationContextType>({
+  tenantInfo: initialTenantInfo,
   userInfo: initialUserInfo,
-  reloadUserInfo: () => {}
+  reloadTenantInfo: () => {
+    throw new Error("No authentication provider found");
+  },
+  reloadUserInfo: () => {
+    throw new Error("No authentication provider found");
+  }
 });
 
 export interface AuthenticationProviderProps {
@@ -46,10 +68,12 @@ export interface AuthenticationProviderProps {
  * Provide authentication context to the application.
  */
 export function AuthenticationProvider({ children }: Readonly<AuthenticationProviderProps>) {
+  const [tenantInfo, setTenantInfo] = useState<TenantInfoEnv>(initialTenantInfo);
   const [userInfo, setUserInfo] = useState<UserInfo | null>(initialUserInfo);
   const fetching = useRef(false);
 
   const reloadUserInfo = useCallback(async () => {
+    console.log("Reloading user info");
     if (fetching.current) return;
     fetching.current = true;
     try {
@@ -61,22 +85,51 @@ export function AuthenticationProvider({ children }: Readonly<AuthenticationProv
     fetching.current = false;
   }, []);
 
-  const authenticationContext = useMemo(
+  const reloadTenantInfo = useCallback(async () => {
+    console.log("Reloading tenant info");
+    if (fetching.current) return;
+    fetching.current = true;
+    try {
+      const newTenantInfo = await getTenantInfo();
+      setTenantInfo(newTenantInfo ?? { id: null });
+    } catch (error) {
+      setTenantInfo({
+        id: null
+      });
+    }
+    fetching.current = false;
+  }, []);
+
+  const context: AuthenticationContextType = useMemo(
     () => ({
+      tenantInfo,
+      reloadTenantInfo,
       userInfo,
       reloadUserInfo
     }),
-    [userInfo, reloadUserInfo]
+    [tenantInfo, userInfo, reloadTenantInfo, reloadUserInfo]
   );
 
-  return <AuthenticationContext.Provider value={authenticationContext}>{children}</AuthenticationContext.Provider>;
+  return <authenticationContext.Provider value={context}>{children}</authenticationContext.Provider>;
 }
 
-function createUserInfo(userInfoEnv: UserInfoEnv): UserInfo {
+function createUserInfo(userInfoEnv: UserInfoEnv): UserInfo | null {
+  if (!userInfoEnv.isAuthenticated) {
+    return null;
+  }
   const { firstName, lastName, email } = userInfoEnv;
-  const initials = firstName && lastName ? `${firstName[0]}${lastName[0]}` : email?.slice(0, 2).toUpperCase() ?? "";
 
-  const fullName = firstName && lastName ? `${userInfoEnv.firstName} ${userInfoEnv.lastName}` : email ?? "";
+  const fullName =
+    firstName && lastName ? `${userInfoEnv.firstName} ${userInfoEnv.lastName}` : email?.split("@")[0] ?? "";
 
-  return { ...userInfoEnv, initials, fullName };
+  return {
+    ...userInfoEnv,
+    fullName
+  };
+}
+
+function createTenantInfo(tenantInfoEnv: TenantInfoEnv): TenantInfo {
+  return {
+    ...tenantInfoEnv
+  };
 }

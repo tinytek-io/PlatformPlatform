@@ -8,6 +8,7 @@ import type { RsbuildConfig, RsbuildPlugin } from "@rsbuild/core";
  * Build ignore pattern for the dist folder
  */
 const applicationRoot = path.resolve(process.cwd(), "..", "..");
+const certificateRoot = path.join(applicationRoot, "..", "infrastructure", "local", "certs");
 const distFolder = path.join(process.cwd(), "dist");
 const ignoreDistPattern = `**/${path.relative(applicationRoot, distFolder)}/**`;
 
@@ -20,7 +21,7 @@ export type DevelopmentServerPluginOptions = {
   /**
    * The port to start the development server on
    */
-  port: number;
+  port?: number;
 };
 
 /**
@@ -29,7 +30,7 @@ export type DevelopmentServerPluginOptions = {
  *
  * @param options - The options for the plugin
  */
-export function DevelopmentServerPlugin(options: DevelopmentServerPluginOptions): RsbuildPlugin {
+export function DevelopmentServerPlugin(options: DevelopmentServerPluginOptions = {}): RsbuildPlugin {
   return {
     name: "DevelopmentServerPlugin",
     setup(api) {
@@ -39,16 +40,15 @@ export function DevelopmentServerPlugin(options: DevelopmentServerPluginOptions)
           return userConfig;
         }
 
-        // Path to the TypeScriptPlatform.pfx certificate generated as part of the Aspire setup
-        const pfxPath = path.join(os.homedir(), ".aspnet", "dev-certs", "https", "TypeScriptPlatform.pfx");
-        const passphrase = process.env.CERTIFICATE_PASSWORD ?? "";
+        const certKeyPath = path.join(certificateRoot, "cert.key");
+        const certPemPath = path.join(certificateRoot, "cert.pem");
 
-        if (fs.existsSync(pfxPath) === false) {
-          throw new Error(`Certificate not found at path: ${pfxPath}`);
+        if (fs.existsSync(certKeyPath) === false) {
+          throw new Error(`Certificate key not found at path: ${certKeyPath}`);
         }
 
-        if (passphrase === "") {
-          throw new Error("CERTIFICATE_PASSWORD environment variable is not set");
+        if (fs.existsSync(certPemPath) === false) {
+          throw new Error(`Certificate pem not found at path: ${certPemPath}`);
         }
 
         logger.info(`Using ignore pattern: ${ignoreDistPattern}`);
@@ -62,10 +62,10 @@ export function DevelopmentServerPlugin(options: DevelopmentServerPluginOptions)
               "Access-Control-Allow-Origin": "*"
             },
             // Start the server on the specified port with the TypeScriptPlatform.pfx certificate
-            port: options.port,
+            port: options.port ?? Number.parseInt(process.env.PORT ?? "3000", 10),
             https: {
-              pfx: fs.readFileSync(pfxPath),
-              passphrase
+              key: fs.readFileSync(certKeyPath),
+              cert: fs.readFileSync(certPemPath)
             }
           },
           dev: {

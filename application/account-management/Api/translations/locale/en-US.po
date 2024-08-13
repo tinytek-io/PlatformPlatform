@@ -1,0 +1,290 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2024-08-18 13:50+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en-US\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. js-lingui-explicit-id
+msgid "Account registration not found"
+msgstr "Account registration not found"
+
+#. js-lingui-explicit-id
+msgid "Account registration expired"
+msgstr "Account registration expired"
+
+#. js-lingui-explicit-id
+msgid "Invalid verification code"
+msgstr "Invalid verification code"
+
+#. js-lingui-explicit-id
+msgid "No tenants found for email"
+msgstr "No tenants found for email"
+
+#. js-lingui-explicit-id
+msgid "User not found"
+msgstr "User not found"
+
+#. js-lingui-explicit-id
+msgid "Expected array to contain at least one matching value"
+msgstr "Expected array to contain at least one matching value"
+
+#. js-lingui-explicit-id
+msgid "Expected array to contain no more than {maxContains} matching values"
+msgstr "Expected array to contain no more than {maxContains} matching values"
+
+#. js-lingui-explicit-id
+msgid "Expected array to contain at least {minContains} matching values"
+msgstr "Expected array to contain at least {minContains} matching values"
+
+#. js-lingui-explicit-id
+msgid "Expected array length to be less or equal to {maxItems}"
+msgstr "Expected array length to be less or equal to {maxItems}"
+
+#. js-lingui-explicit-id
+msgid "Expected array length to be greater or equal to {minItems}"
+msgstr "Expected array length to be greater or equal to {minItems}"
+
+#. js-lingui-explicit-id
+msgid "Expected array elements to be unique"
+msgstr "Expected array elements to be unique"
+
+#. js-lingui-explicit-id
+msgid "Expected array"
+msgstr "Expected array"
+
+#. js-lingui-explicit-id
+msgid "Expected AsyncIterator"
+msgstr "Expected AsyncIterator"
+
+#. js-lingui-explicit-id
+msgid "Expected bigint to be less than {exclusiveMaximum}"
+msgstr "Expected bigint to be less than {exclusiveMaximum}"
+
+#. js-lingui-explicit-id
+msgid "Expected bigint to be greater than {exclusiveMinimum}"
+msgstr "Expected bigint to be greater than {exclusiveMinimum}"
+
+#. js-lingui-explicit-id
+msgid "Expected bigint to be less or equal to {maximum}"
+msgstr "Expected bigint to be less or equal to {maximum}"
+
+#. js-lingui-explicit-id
+msgid "Expected bigint to be greater or equal to {minimum}"
+msgstr "Expected bigint to be greater or equal to {minimum}"
+
+#. js-lingui-explicit-id
+msgid "Expected bigint to be a multiple of {multipleOf}"
+msgstr "Expected bigint to be a multiple of {multipleOf}"
+
+#. js-lingui-explicit-id
+msgid "Expected bigint"
+msgstr "Expected bigint"
+
+#. js-lingui-explicit-id
+msgid "Expected boolean"
+msgstr "Expected boolean"
+
+#. js-lingui-explicit-id
+msgid "Expected Date timestamp to be greater than {exclusiveMinimumTimestamp}"
+msgstr "Expected Date timestamp to be greater than {exclusiveMinimumTimestamp}"
+
+#. js-lingui-explicit-id
+msgid "Expected Date timestamp to be less than {exclusiveMaximumTimestamp}"
+msgstr "Expected Date timestamp to be less than {exclusiveMaximumTimestamp}"
+
+#. js-lingui-explicit-id
+msgid "Expected Date timestamp to be greater or equal to {minimumTimestamp}"
+msgstr "Expected Date timestamp to be greater or equal to {minimumTimestamp}"
+
+#. js-lingui-explicit-id
+msgid "Expected Date timestamp to be less or equal to {maximumTimestamp}"
+msgstr "Expected Date timestamp to be less or equal to {maximumTimestamp}"
+
+#. js-lingui-explicit-id
+msgid "Expected Date timestamp to be a multiple of {multipleOfTimestamp}"
+msgstr "Expected Date timestamp to be a multiple of {multipleOfTimestamp}"
+
+#. js-lingui-explicit-id
+msgid "Expected Date"
+msgstr "Expected Date"
+
+#. js-lingui-explicit-id
+msgid "Expected function"
+msgstr "Expected function"
+
+#. js-lingui-explicit-id
+msgid "Expected integer to be less than {exclusiveMaximum}"
+msgstr "Expected integer to be less than {exclusiveMaximum}"
+
+#. js-lingui-explicit-id
+msgid "Expected integer to be greater than {exclusiveMinimum}"
+msgstr "Expected integer to be greater than {exclusiveMinimum}"
+
+#. js-lingui-explicit-id
+msgid "Expected integer to be less or equal to {maximum}"
+msgstr "Expected integer to be less or equal to {maximum}"
+
+#. js-lingui-explicit-id
+msgid "Expected integer to be greater or equal to {minimum}"
+msgstr "Expected integer to be greater or equal to {minimum}"
+
+#. js-lingui-explicit-id
+msgid "Expected integer to be a multiple of {multipleOf}"
+msgstr "Expected integer to be a multiple of {multipleOf}"
+
+#. js-lingui-explicit-id
+msgid "Expected integer"
+msgstr "Expected integer"
+
+#. js-lingui-explicit-id
+msgid "Unexpected property"
+msgstr "Unexpected property"
+
+#. js-lingui-explicit-id
+msgid "Expected all values to match"
+msgstr "Expected all values to match"
+
+#. js-lingui-explicit-id
+msgid "Expected Iterator"
+msgstr "Expected Iterator"
+
+#. js-lingui-explicit-id
+msgid "Expected {const}"
+msgstr "Expected {const}"
+
+#. js-lingui-explicit-id
+msgid "Never"
+msgstr "Never"
+
+#. js-lingui-explicit-id
+msgid "Value should not match"
+msgstr "Value should not match"
+
+#. js-lingui-explicit-id
+msgid "Expected null"
+msgstr "Expected null"
+
+#. js-lingui-explicit-id
+msgid "Expected number to be less than {exclusiveMaximum}"
+msgstr "Expected number to be less than {exclusiveMaximum}"
+
+#. js-lingui-explicit-id
+msgid "Expected number to be greater than {exclusiveMinimum}"
+msgstr "Expected number to be greater than {exclusiveMinimum}"
+
+#. js-lingui-explicit-id
+msgid "Expected number to be less or equal to {maximum}"
+msgstr "Expected number to be less or equal to {maximum}"
+
+#. js-lingui-explicit-id
+msgid "Expected number to be greater or equal to {minimum}"
+msgstr "Expected number to be greater or equal to {minimum}"
+
+#. js-lingui-explicit-id
+msgid "Expected number to be a multiple of {multipleOf}"
+msgstr "Expected number to be a multiple of {multipleOf}"
+
+#. js-lingui-explicit-id
+msgid "Expected number"
+msgstr "Expected number"
+
+#. js-lingui-explicit-id
+msgid "Expected object"
+msgstr "Expected object"
+
+#. js-lingui-explicit-id
+msgid "Expected object to have no more than {maxProperties} properties"
+msgstr "Expected object to have no more than {maxProperties} properties"
+
+#. js-lingui-explicit-id
+msgid "Expected object to have at least {minProperties} properties"
+msgstr "Expected object to have at least {minProperties} properties"
+
+#. js-lingui-explicit-id
+msgid "Expected required property"
+msgstr "Expected required property"
+
+#. js-lingui-explicit-id
+msgid "Expected Promise"
+msgstr "Expected Promise"
+
+#. js-lingui-explicit-id
+msgid "Expected string to match regular expression"
+msgstr "Expected string to match regular expression"
+
+#. js-lingui-explicit-id
+msgid "Unknown format '{format}'"
+msgstr "Unknown format '{format}'"
+
+#. js-lingui-explicit-id
+msgid "Expected string to match '{format}' format"
+msgstr "Expected string to match '{format}' format"
+
+#. js-lingui-explicit-id
+msgid "Expected string length less or equal to {maxLength}"
+msgstr "Expected string length less or equal to {maxLength}"
+
+#. js-lingui-explicit-id
+msgid "Expected string length greater or equal to {minLength}"
+msgstr "Expected string length greater or equal to {minLength}"
+
+#. js-lingui-explicit-id
+msgid "Expected string to match '{pattern}'"
+msgstr "Expected string to match '{pattern}'"
+
+#. js-lingui-explicit-id
+msgid "Expected string"
+msgstr "Expected string"
+
+#. js-lingui-explicit-id
+msgid "Expected symbol"
+msgstr "Expected symbol"
+
+#. js-lingui-explicit-id
+msgid "Expected tuple to have {maxItems} elements"
+msgstr "Expected tuple to have {maxItems} elements"
+
+#. js-lingui-explicit-id
+msgid "Expected tuple"
+msgstr "Expected tuple"
+
+#. js-lingui-explicit-id
+msgid "Expected byte length less or equal to {maxByteLength}"
+msgstr "Expected byte length less or equal to {maxByteLength}"
+
+#. js-lingui-explicit-id
+msgid "Expected byte length greater or equal to {minByteLength}"
+msgstr "Expected byte length greater or equal to {minByteLength}"
+
+#. js-lingui-explicit-id
+msgid "Expected Uint8Array"
+msgstr "Expected Uint8Array"
+
+#. js-lingui-explicit-id
+msgid "Expected undefined"
+msgstr "Expected undefined"
+
+#. js-lingui-explicit-id
+msgid "Expected union value"
+msgstr "Expected union value"
+
+#. js-lingui-explicit-id
+msgid "Expected void"
+msgstr "Expected void"
+
+#. js-lingui-explicit-id
+msgid "Expected kind '{kind}'"
+msgstr "Expected kind '{kind}'"
+
+#. js-lingui-explicit-id
+msgid "Unknown error type"
+msgstr "Unknown error type"

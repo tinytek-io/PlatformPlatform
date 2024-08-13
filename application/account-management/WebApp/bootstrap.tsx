@@ -6,9 +6,7 @@ import ReactDOM from "react-dom/client";
 import { Translation } from "@repo/infrastructure/translations/Translation";
 import { ApplicationInsightsProvider } from "@repo/infrastructure/applicationInsights/ApplicationInsightsProvider";
 
-const { TranslationProvider } = await Translation.create(
-  (locale) => import(`@/shared/translations/locale/${locale}.ts`)
-);
+const { TranslationProvider } = await Translation.create((locale) => import(`@/translations/locale/${locale}.ts`));
 
 const rootElement = document.getElementById("root");
 

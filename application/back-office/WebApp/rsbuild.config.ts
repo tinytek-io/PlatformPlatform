@@ -18,7 +18,7 @@ export default defineConfig({
     FileSystemRouterPlugin(),
     RunTimeEnvironmentPlugin(customBuildEnv),
     LinguiPlugin(),
-    DevelopmentServerPlugin({ port: 9201 }),
+    DevelopmentServerPlugin(),
     MFPlugin({
       remotes: {
         "account-management": { port: 9101 }

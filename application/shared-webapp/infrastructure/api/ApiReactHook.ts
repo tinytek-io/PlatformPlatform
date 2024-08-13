@@ -121,7 +121,7 @@ export function createApiReactHook<
         }
       };
 
-      let timeout: NodeJS.Timeout | undefined;
+      let timeout: Timer | undefined;
 
       if (memorizedHookOptions.autoFetch) {
         if (memorizedHookOptions.debounceMs) {

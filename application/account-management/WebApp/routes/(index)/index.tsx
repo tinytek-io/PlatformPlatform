@@ -11,6 +11,7 @@ import { FeatureSection4 } from "./-components/FeatureSection4";
 import { CtaSection2 } from "./-components/CtaSection2";
 import { CtaSection3 } from "./-components/CtaSection3";
 import { FooterSection } from "./-components/FooterSection";
+import "@/shared/lib/api/elysia";
 
 export const Route = createFileRoute("/(index)/")({
   component: LandingPage

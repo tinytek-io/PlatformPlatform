@@ -7,6 +7,7 @@ import UserProfileModal from "@/shared/components/userModals/UserProfileModal";
 import DeleteAccountModal from "@/shared/components/accountModals/DeleteAccountConfirmation";
 import { Avatar, type AvatarProps } from "@repo/ui/components/Avatar";
 import { useUserInfo } from "@repo/infrastructure/auth/hooks";
+import { fetchApi } from "../lib/api/elysia";
 
 export type UserButtonProps = Pick<AvatarProps, "size" | "isRound">;
 
@@ -44,22 +45,28 @@ export function UserButton({ isRound = false, size = "xs" }: Readonly<UserButton
             Account settings
           </MenuItem>
           <MenuSeparator />
-          <MenuItem onAction={() => {}}>
+          <MenuItem
+            onAction={async () => {
+              await fetchApi("/authentication/sign-out", { method: "POST" });
+            }}
+          >
             <LogOutIcon size={16} /> Log out
           </MenuItem>
         </Menu>
       </MenuTrigger>
 
-      <AccountModal
-        isOpen={isAccountModalOpen}
-        onOpenChange={setIsAccountModalOpen}
-        onDeleteAccount={() => {
-          setIsAccountModalOpen(false);
-          setIsDeleteAccountModalOpen(true);
-        }}
-      />
-      <UserProfileModal isOpen={isProfileModalOpen} onOpenChange={setIsProfileModalOpen} />
-      <DeleteAccountModal isOpen={isDeleteAccountModalOpen} onOpenChange={setIsDeleteAccountModalOpen} />
+      {isAccountModalOpen && (
+        <AccountModal
+          isOpen
+          onOpenChange={setIsAccountModalOpen}
+          onDeleteAccount={() => {
+            setIsAccountModalOpen(false);
+            setIsDeleteAccountModalOpen(true);
+          }}
+        />
+      )}
+      {isProfileModalOpen && <UserProfileModal isOpen onOpenChange={setIsProfileModalOpen} />}
+      {isDeleteAccountModalOpen && <DeleteAccountModal isOpen onOpenChange={setIsDeleteAccountModalOpen} />}
     </>
   );
 }

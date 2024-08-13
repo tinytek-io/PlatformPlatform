@@ -12,9 +12,9 @@ import logoMarkUrl from "@/shared/images/logo-mark.svg";
 import poweredByUrl from "@/shared/images/powered-by.svg";
 import { useFormState } from "react-dom";
 import { getRegistration } from "./-shared/registrationState";
-import { api } from "@/shared/lib/api/client";
 import { FormErrorMessage } from "@repo/ui/components/FormErrorMessage";
 import { signedUpPath } from "@repo/infrastructure/auth/constants";
+import { serverAction } from "@/shared/lib/api/elysia";
 
 export const Route = createFileRoute("/register/verify")({
   component: () => (
@@ -32,8 +32,8 @@ export const Route = createFileRoute("/register/verify")({
 export function CompleteAccountRegistrationForm() {
   const { email, accountRegistrationId, expireAt } = getRegistration();
   const { expiresInString, isExpired } = useExpirationTimeout(expireAt);
-  const [{ success, title, message, errors }, action] = useFormState(
-    api.action("/api/account-management/account-registrations/{id}/complete"),
+  const [{ success, title, message, errors, data }, action] = useFormState(
+    serverAction("/account-management/api/account-registration/complete"),
     {
       success: null
     }
@@ -41,11 +41,8 @@ export function CompleteAccountRegistrationForm() {
 
   if (isExpired) return <Navigate to="/register/expired" />;
 
-  if (success) return <Navigate to={signedUpPath} />;
-
   return (
     <Form action={action} validationErrors={errors} validationBehavior="aria" className="w-full max-w-sm space-y-3">
-      <input type="hidden" name="id" value={accountRegistrationId} />
       <div className="flex w-full flex-col gap-4 rounded-lg px-6 pt-8 pb-4">
         <div className="flex justify-center">
           <Link href="/">

@@ -10,11 +10,11 @@ import poweredByUrl from "@/shared/images/powered-by.svg";
 import { TextField } from "@repo/ui/components/TextField";
 import { useFormState } from "react-dom";
 import { useLingui } from "@lingui/react";
-import { api } from "@/shared/lib/api/client";
 import { FormErrorMessage } from "@repo/ui/components/FormErrorMessage";
 import { setVerificationInfo } from "./-shared/verificationState";
 import { useState } from "react";
 import { signUpPath } from "@repo/infrastructure/auth/constants";
+import { serverAction } from "@/shared/lib/api/elysia";
 
 export const Route = createFileRoute("/login/")({
   component: () => (
@@ -34,15 +34,15 @@ export function LoginForm() {
   const [email, setEmail] = useState("");
 
   const [{ data, errors, success, title, message }, action, isPending] = useFormState(
-    api.action("/api/account-management/authentication/start"),
+    serverAction("/authentication/otp/sign-in"),
     { success: null }
   );
 
   if (success) {
-    const { loginId: id, validForSeconds } = data;
+    const { validForSeconds } = data;
 
     setVerificationInfo({
-      id,
+      id: "",
       email,
       expireAt: new Date(Date.now() + validForSeconds * 1000)
     });

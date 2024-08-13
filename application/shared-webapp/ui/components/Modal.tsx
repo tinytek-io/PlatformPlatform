@@ -47,12 +47,13 @@ const modalStyles = tv({
 type ModalProps = {
   position?: "center" | "top" | "left" | "right" | "bottom";
   fullSize?: boolean;
+  className?: string;
 } & ModalOverlayProps;
 
-export function Modal({ position, fullSize, ...props }: Readonly<ModalProps>) {
+export function Modal({ position, fullSize, className, ...props }: Readonly<ModalProps>) {
   return (
     <ModalOverlay {...props} className={(renderProps) => overlayStyles({ position, fullSize, ...renderProps })}>
-      <AriaModal {...props} className={modalStyles} />
+      <AriaModal {...props} className={(renderProps) => modalStyles({ ...renderProps, className })} />
     </ModalOverlay>
   );
 }

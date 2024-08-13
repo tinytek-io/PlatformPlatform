@@ -1,0 +1,27 @@
+{
+  "name": "account-management-api",
+  "version": "1.0.0",
+  "description": "AccountManagement API",
+  "author": "TinyTek",
+  "license": "MIT",
+  "scripts": {
+    "dev": "bun run update-translations && tsc && bun --watch index.ts",
+    "build": "bun run update-translations && tsc && bun build index.ts",
+    "start": "NODE_ENV=production bun index.ts",
+    "test": "bun test",
+    "update-translations": "lingui extract && lingui compile --typescript",
+    "prisma:push": "prisma db push",
+    "prisma:reset": "prisma db push --force-reset",
+    "prisma:seed": "NODE_ENV=development prisma db seed",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:migration:create": "npx prisma migrate dev --create-only",
+    "prisma:migration:apply": "npx prisma migrate dev"
+  },
+  "dependencies": {
+    "@lucia-auth/adapter-prisma": "*",
+    "@prisma/client": "*",
+    "@repo/api-core": "*",
+    "@repo/infrastructure": "*",
+    "lucia": "*"
+  }
+}

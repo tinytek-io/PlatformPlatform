@@ -2,8 +2,8 @@ import { useRouter } from "@tanstack/react-router";
 import { ChevronsLeftIcon, type LucideIcon } from "lucide-react";
 import { createContext, useCallback, useContext, useState } from "react";
 import { tv } from "tailwind-variants";
-import logoMarkUrl from "../images/logo-mark.svg";
-import logoWrapUrl from "../images/logo-wrap.svg";
+import defaultLogoSquareUrl from "../images/logo-mark.svg";
+import defaultLogoWideUrl from "../images/logo-wrap.svg";
 import { Button } from "./Button";
 import { Dialog, DialogTrigger } from "./Dialog";
 import { Modal } from "./Modal";
@@ -77,7 +77,7 @@ const chevronStyles = tv({
   }
 });
 
-const logoWrapStyles = tv({
+const logoWideStyles = tv({
   base: "self-start  transition-all duration-300",
   variants: {
     isCollapsed: {
@@ -87,7 +87,7 @@ const logoWrapStyles = tv({
   }
 });
 
-const logoMarkStyles = tv({
+const logoSquareStyles = tv({
   base: "self-start transition-all duration-300",
   variants: {
     isCollapsed: {
@@ -98,11 +98,18 @@ const logoMarkStyles = tv({
 });
 
 type SideMenuProps = {
+  logoWideUrl?: string;
+  logoSquareUrl?: string;
   className?: string;
   children: React.ReactNode;
 };
 
-export function SideMenu({ className, children }: Readonly<SideMenuProps>) {
+export function SideMenu({
+  logoWideUrl = defaultLogoWideUrl,
+  logoSquareUrl = defaultLogoSquareUrl,
+  className,
+  children
+}: Readonly<SideMenuProps>) {
   const [isCollapsed, setIsCollapsed] = useState(() => !window.matchMedia("(min-width: 1024px)").matches);
 
   const toggleCollapse = () => {
@@ -123,10 +130,10 @@ export function SideMenu({ className, children }: Readonly<SideMenuProps>) {
               <ChevronsLeftIcon className={chevronStyles({ isCollapsed })} />
             </Button>
             <div className="pr-8">
-              <img src={logoWrapUrl} alt="Logo Wrap" className={logoWrapStyles({ isCollapsed })} />
+              <img src={logoWideUrl} alt="Logo wide" className={logoWideStyles({ isCollapsed })} />
             </div>
             <div className="flex pl-3 pt-4">
-              <img src={logoMarkUrl} alt="Logo" className={logoMarkStyles({ isCollapsed })} />
+              <img src={logoSquareUrl} alt="Logo square" className={logoSquareStyles({ isCollapsed })} />
             </div>
           </div>
           {children}
@@ -136,12 +143,12 @@ export function SideMenu({ className, children }: Readonly<SideMenuProps>) {
         <div className="absolute right-2 bottom-2 sm:hidden z-50">
           <DialogTrigger>
             <Button aria-label="Help" variant="icon">
-              <img src={logoMarkUrl} alt="Logo" className="w-8 h-8" />
+              <img src={logoSquareUrl} alt="Logo square" className="w-8 h-8" />
             </Button>
             <Modal position="left" fullSize>
               <Dialog className="w-60">
                 <div className="pb-8">
-                  <img src={logoWrapUrl} alt="Logo Wrap" />
+                  <img src={logoWideUrl} alt="Logo wide" />
                 </div>
                 {children}
               </Dialog>

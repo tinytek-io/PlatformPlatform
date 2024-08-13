@@ -1,15 +1,14 @@
-import { AlertDialog } from "@repo/ui/components/AlertDialog";
-import { FileTrigger } from "react-aria-components";
-import { Button } from "@repo/ui/components/Button";
 import { Modal } from "@repo/ui/components/Modal";
-import { MailIcon, XIcon } from "lucide-react";
-import React from "react";
+import { MailIcon } from "lucide-react";
 import { Input } from "@repo/ui/components/Input";
-import { useUserInfo } from "@repo/infrastructure/auth/hooks";
+import { useAuthentication, useUserInfo } from "@repo/infrastructure/auth/hooks";
 import { TextField } from "@repo/ui/components/TextField";
 import { FieldGroup } from "@repo/ui/components/Field";
 import { Label } from "@repo/ui/components/Label";
-import { Avatar } from "@repo/ui/components/Avatar";
+import { useFormState } from "react-dom";
+import { serverAction } from "@/shared/lib/api/elysia";
+import { AvatarImageField } from "@repo/ui/components/AvatarImageField";
+import { FormDialog } from "@repo/ui/components/FormDialog";
 
 type ProfileModalProps = {
   isOpen: boolean;
@@ -17,55 +16,63 @@ type ProfileModalProps = {
 };
 
 export function UserProfileModal({ isOpen, onOpenChange }: Readonly<ProfileModalProps>) {
-  const [file, setFile] = React.useState<string[] | null>(null);
+  const { reloadUserInfo } = useAuthentication();
   const userInfo = useUserInfo();
 
+  const [{ success, title, message, errors, data }, action, isPending] = useFormState(
+    serverAction("/account-management/api/users/:userId"),
+    { success: null }
+  );
   if (!userInfo) return null;
+
+  if (success) {
+    console.log("User updated successfully");
+    reloadUserInfo();
+    onOpenChange(false);
+  }
 
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable>
-      <AlertDialog actionLabel="Save changes" title="" onAction={() => onOpenChange(false)}>
-        <Button onPress={() => onOpenChange(false)} className="absolute top-0 right-0 m-3" variant="ghost" size="sm">
-          <XIcon className="w-4 h-4" />
-        </Button>
-        <div className="flex flex-col text-foreground text-xl font-semibold">
-          <div className="pb-4">
-            <h1>Edit profile</h1>
-            <h2 className="text-muted-foreground text-sm font-normal">Manage your profile here</h2>
-          </div>
-          <div className="w-full flex-col flex gap-3 text-muted-foreground text-sm font-medium">
-            <label>Photo</label>
-            <div className="flex flex-row gap-4">
-              <FileTrigger
-                onSelect={(e) => {
-                  if (e) {
-                    const files = Array.from(e);
-                    const filenames = files.map((file) => file.name);
-                    setFile(filenames);
-                  }
-                }}
-              >
-                <Button variant="icon" className="rounded-full">
-                  <Avatar avatarUrl={userInfo.avatarUrl} initials={userInfo.initials} isRound size="md" />
-                </Button>
-              </FileTrigger>
-              {file}
-            </div>
-            <div className="flex flex-row gap-4">
-              <TextField label="First name" placeholder="E.g. Olivia" value={userInfo.firstName} />
-              <TextField label="Last name" placeholder="E.g. Rhye" value={userInfo.lastName} />
-            </div>
-            <TextField>
-              <Label>Email</Label>
-              <FieldGroup>
-                <MailIcon className="w-4 h-4" />
-                <Input value={userInfo.email} isDisabled isEmbedded />
-              </FieldGroup>
-            </TextField>
-            <TextField label="Title" placeholder="E.g. Marketing Manager" value={userInfo.title} />
-          </div>
+      <FormDialog
+        title="Edit profile"
+        description="Manage your profile here"
+        actionLabel="Save changes"
+        action={action}
+        validationErrors={errors}
+        onOpenChange={onOpenChange}
+      >
+        <input type="hidden" name="userId" value={userInfo.id} />
+        <AvatarImageField
+          name="image"
+          label="Photo"
+          placeholder="Upload an image"
+          avatarUrl={userInfo.avatarUrl}
+          initials={userInfo.initials}
+          acceptedFileTypes={["image/png"]}
+        />
+        <div className="flex flex-row gap-4">
+          <TextField
+            name="firstName"
+            label="First name"
+            placeholder="E.g. Olivia"
+            defaultValue={userInfo.firstName ?? ""}
+          />
+          <TextField name="lastName" label="Last name" placeholder="E.g. Rhye" defaultValue={userInfo.lastName ?? ""} />
         </div>
-      </AlertDialog>
+        <TextField>
+          <Label>Email</Label>
+          <FieldGroup>
+            <MailIcon className="w-4 h-4" />
+            <Input value={userInfo.email} isDisabled isEmbedded />
+          </FieldGroup>
+        </TextField>
+        <TextField
+          name="title"
+          label="Title"
+          placeholder="E.g. Marketing Manager"
+          defaultValue={userInfo.title ?? ""}
+        />
+      </FormDialog>
     </Modal>
   );
 }

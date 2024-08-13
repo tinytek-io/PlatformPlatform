@@ -13,7 +13,7 @@ export const signOutPath = "/logout";
 /**
  * Link to the page users should see after signing in
  */
-export const signedInPath = "/admin/users";
+export const signedInPath = "/account-management/users";
 /**
  * Link to the page users should see after signing out
  */
@@ -21,4 +21,4 @@ export const signedOutPath = "/";
 /**
  * Link to the page users should see after signing up
  */
-export const signedUpPath = "/admin/users";
+export const signedUpPath = "/account-management/users";

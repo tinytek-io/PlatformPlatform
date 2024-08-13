@@ -14,7 +14,7 @@ export function TopMenu({ children }: Readonly<TopMenuProps>) {
   return (
     <div className="flex items-center justify-between w-full">
       <Breadcrumbs>
-        <Breadcrumb href="/admin">Home</Breadcrumb>
+        <Breadcrumb href="/account-management">Home</Breadcrumb>
         {children}
       </Breadcrumbs>
       <div className="flex flex-row gap-6 items-center">
