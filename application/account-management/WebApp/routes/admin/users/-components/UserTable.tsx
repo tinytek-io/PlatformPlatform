@@ -34,6 +34,7 @@ export function UserTable() {
   const handlePageChange = useCallback(
     (page: number) => {
       navigate({
+        to: "/admin/users",
         search: (prev) => ({
           ...prev,
           pageOffset: page === 1 ? undefined : page - 1
@@ -47,6 +48,7 @@ export function UserTable() {
     (newSortDescriptor: SortDescriptor) => {
       setSortDescriptor(newSortDescriptor);
       navigate({
+        to: "/admin/users",
         search: (prev) => ({
           ...prev,
           pageOffset: undefined, // I Just added this to set the PageOffset to 0 when sorting
